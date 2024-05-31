@@ -17,3 +17,14 @@ def build_markov_chain(tokens):
             markov_chain[current_token] = []
         markov_chain[current_token].append(next_token)
     return markov_chain
+
+def generate_text(markov_chain, num_words=200):
+    current_token = random.choice(list(markov_chain.keys()))
+    generated_text = [current_token]
+
+    for word_count in range(num_words - 1):
+        next_tokens = markov_chain[current_token]
+        current_token = random.choice(next_tokens)
+        generated_text.append(current_token)
+
+    return ' '.join(generated_text)
