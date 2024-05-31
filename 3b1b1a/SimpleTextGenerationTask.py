@@ -28,3 +28,17 @@ def generate_text(markov_chain, num_words=200):
         generated_text.append(current_token)
 
     return ' '.join(generated_text)
+
+def main():
+    book_path = '/Users/klishchyuriy/Documents/GitHub/Additional_Points_Tasks/3b1b1a/TheGreatGatsby.txt'
+
+    text = load_book(book_path)
+    tokens = tokenize(text)
+    markov_chain = build_markov_chain(tokens)
+    generated_text = generate_text(markov_chain)
+
+    print(generated_text)
+
+
+if __name__ == "__main__":
+    main()
